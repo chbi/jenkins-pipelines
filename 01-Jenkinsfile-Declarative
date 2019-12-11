@@ -5,20 +5,20 @@ pipeline {
             steps {
                 checkout scm
                 sh 'ls -alh'
-                sh 'fake.sh "compile" 6'
-                sh 'fake.sh "linking" 3'
+                sh './fake.sh "compile" 6'
+                sh './fake.sh "linking" 3'
             }
         }
         stage('Test') {
             steps {
                 checkout scm
-                sh 'fake.sh "Testing product" 10'
+                sh './fake.sh "Testing product" 10'
             }
         }
         stage('Deploy') {
             steps {
                 checkout scm
-                sh 'fake.sh "Deploy" 3'
+                sh './fake.sh "Deploy" 3'
             }
         }
     }
