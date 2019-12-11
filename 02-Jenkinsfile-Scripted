@@ -1,13 +1,16 @@
 node ('lnx') {
-    checkout scm
+
     stage('Build') {
-      sh 'fake.sh "compile" 6'
-      sh 'fake.sh "linking" 3'
+      checkout scm
+      sh './fake.sh "compile" 6'
+      sh './fake.sh "linking" 3'
     }
     stage('Test') {
-      sh 'fake.sh "Testing product" 10'
+      checkout scm
+      sh './fake.sh "Testing product" 10'
     }
     stage('Deploy') {
-      sh 'fake.sh "Deploy" 3'
+      checkout scm
+      sh './fake.sh "Deploy" 3'
     }
 }
