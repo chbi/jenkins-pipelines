@@ -1,0 +1,21 @@
+node ('lnx') {
+
+    stage('Build') {
+      checkout scm
+      sh './fake.sh "compile" 6'
+      sh './fake.sh "linking" 3'
+    }
+    stage('Test') {
+      checkout scm
+
+      // the following line never fails
+      sh './fake1.sh "Testing product" 10 || true'
+    }
+    stage('Deploy') {
+      if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
+        checkout scm
+        println "deploy from job $JOB_NAME on node $NODE_NAME$"
+        sh './fake.sh "Deploy" 3'
+      }
+    }
+}
