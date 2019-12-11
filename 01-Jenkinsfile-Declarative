@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'build.sh "compile" 6'
+                sh 'build.sh "linking" 3'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'build.sh "Testing product" 10'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'build.sh "Deploy" 3'
+            }
+        }
+    }
+}

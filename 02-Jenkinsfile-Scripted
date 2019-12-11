@@ -1,0 +1,12 @@
+node {
+    stage('Build') {
+      sh 'build.sh "compile" 6'
+      sh 'build.sh "linking" 3'
+    }
+    stage('Test') {
+      sh 'build.sh "Testing product" 10'
+    }
+    stage('Deploy') {
+      sh 'build.sh "Deploy" 3'
+    }
+}
