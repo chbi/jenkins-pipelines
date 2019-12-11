@@ -1,4 +1,5 @@
 node ('lnx') {
+    checkout scm
     stage('Build') {
       sh 'fake.sh "compile" 6'
       sh 'fake.sh "linking" 3'
