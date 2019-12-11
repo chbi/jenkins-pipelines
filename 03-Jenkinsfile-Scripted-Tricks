@@ -14,7 +14,7 @@ node ('lnx') {
     stage('Deploy') {
       if (currentBuild.result == null || currentBuild.result == 'SUCCESS') {
         checkout scm
-        println "deploy from job $JOB_NAME on node $NODE_NAME$"
+        println "deploy from job $JOB_NAME on node $NODE_NAME"
         sh './fake.sh "Deploy" 3'
       }
     }
