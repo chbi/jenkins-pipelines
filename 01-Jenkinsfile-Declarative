@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 checkout scm
+                sh 'ls -alh'
                 sh 'fake.sh "compile" 6'
                 sh 'fake.sh "linking" 3'
             }
